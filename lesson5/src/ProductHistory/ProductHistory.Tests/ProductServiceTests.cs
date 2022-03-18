@@ -2,6 +2,8 @@ using Moq;
 using ProductHistoryBusiness;
 using ProductHistoryBusiness.Models;
 using ProductHistoryBusiness.Repositories;
+using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace ProductHistory.Tests
@@ -57,6 +59,29 @@ namespace ProductHistory.Tests
             Assert.NotNull(result);
             Assert.False(result.Success);
             Assert.Equal(FailureReason.ItemNotFound, result.FailureReason);
+        }
+
+        [Fact]
+        public void Product_Add_Ok()
+        {
+            var product = new Product()
+            {
+                Name = "Test Product",
+                EanCode = "ABC123",
+                Prices = new List<ProductPrice>()
+                {
+                    new ProductPrice()
+                    {
+                        Price = 9.99,
+                        StartDate = DateTime.Now.AddDays(-5),
+                        EndDate = DateTime.Now.AddDays(5)
+                    }
+                },
+                Discounts = new List<ProductDiscount>()
+                {
+                    new ProductDiscount(5, DateTime.Now.AddDays(-5), DateTime.Now.AddDays(5))
+                }
+            };
         }
     }
 }

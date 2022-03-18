@@ -98,12 +98,7 @@ namespace ProductHistory.Tests
                 ExpirationDate = null
             };
 
-            var newProductDiscount = new ProductDiscount()
-            {
-                Discount = 5,
-                StartDate = DateTime.Now.AddDays(-5),
-                EndDate = DateTime.Now.AddDays(5)
-            };
+            var newProductDiscount = new ProductDiscount(5, DateTime.Now.AddDays(-5), DateTime.Now.AddDays(5));
 
             var res = product.AddDiscount(newProductDiscount);
 
@@ -121,12 +116,7 @@ namespace ProductHistory.Tests
                 ExpirationDate = null
             };
 
-            var newProductDiscount = new ProductDiscount()
-            {
-                Discount = 50,
-                StartDate = DateTime.Now.AddDays(-5),
-                EndDate = DateTime.Now.AddDays(5)
-            };
+            var newProductDiscount = new ProductDiscount(50, DateTime.Now.AddDays(-5), DateTime.Now.AddDays(5));
 
             var res = product.AddDiscount(newProductDiscount);
 
@@ -144,12 +134,7 @@ namespace ProductHistory.Tests
                 ExpirationDate = null
             };
 
-            var newProductDiscount = new ProductDiscount()
-            {
-                Discount = 0,
-                StartDate = DateTime.Now.AddDays(-5),
-                EndDate = DateTime.Now.AddDays(5)
-            };
+            var newProductDiscount = new ProductDiscount(0, DateTime.Now.AddDays(-5), DateTime.Now.AddDays(5));
 
             var res = product.AddDiscount(newProductDiscount);
 
@@ -167,12 +152,7 @@ namespace ProductHistory.Tests
                 ExpirationDate = null
             };
 
-            var newProductDiscount = new ProductDiscount()
-            {
-                Discount = 6,
-                StartDate = DateTime.Now.AddDays(-5),
-                EndDate = DateTime.Now.AddDays(5)
-            };
+            var newProductDiscount = new ProductDiscount(6, DateTime.Now.AddDays(-5), DateTime.Now.AddDays(5));
 
             var res = product.AddDiscount(newProductDiscount);
 
@@ -190,12 +170,7 @@ namespace ProductHistory.Tests
                 ExpirationDate = null
             };
 
-            var newProductDiscount = new ProductDiscount()
-            {
-                Discount = 55,
-                StartDate = DateTime.Now.AddDays(-5),
-                EndDate = DateTime.Now.AddDays(5)
-            };
+            var newProductDiscount = new ProductDiscount(55, DateTime.Now.AddDays(-5), DateTime.Now.AddDays(5));
 
             var res = product.AddDiscount(newProductDiscount);
 

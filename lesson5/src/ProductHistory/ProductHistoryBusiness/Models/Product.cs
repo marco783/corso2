@@ -39,9 +39,16 @@
 
     public class ProductDiscount
     {
-        public double Discount { get; set; } = 0;
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public ProductDiscount(double discount, DateTime startDate, DateTime endDate)
+        {
+            Discount = discount;
+            StartDate = startDate;
+            EndDate = endDate;
+        }
+
+        public double Discount { get; }
+        public DateTime StartDate { get; }
+        public DateTime EndDate { get; }
 
     }
 }
