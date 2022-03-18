@@ -31,9 +31,8 @@ namespace ProductHistory.Tests
                 EanCode = "ABD123",
                 ExpirationDate = null
             };
-            var newPrice = new ProductPrice()
+            var newPrice = new ProductPrice(9.99)
             {
-                Price = 99.99,
                 StartDate = DateTime.Now.AddDays(-5),
                 EndDate = DateTime.Now.AddDays(5)
             };
@@ -53,9 +52,8 @@ namespace ProductHistory.Tests
                 EanCode = "ABD123",
                 ExpirationDate = null
             };
-            var newPrice = new ProductPrice()
+            var newPrice = new ProductPrice(9.99)
             {
-                Price = 99.99,
                 StartDate = DateTime.MinValue,
                 EndDate = DateTime.Now.AddDays(5)
             };
@@ -75,9 +73,8 @@ namespace ProductHistory.Tests
                 EanCode = "ABD123",
                 ExpirationDate = null
             };
-            var newPrice = new ProductPrice()
+            var newPrice = new ProductPrice(9.99)
             {
-                Price = 99.99,
                 StartDate = DateTime.Now.AddDays(-5),
                 EndDate = DateTime.MinValue
             };

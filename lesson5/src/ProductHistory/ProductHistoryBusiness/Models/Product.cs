@@ -32,21 +32,26 @@
 
     public class ProductPrice
     {
-        public double Price { get; set; } = 0;
+        public ProductPrice(double price)
+        {
+            Price = price;
+        }
+
+        public double Price { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
     }
 
     public class ProductDiscount
     {
-        public ProductDiscount(double discount, DateTime startDate, DateTime endDate)
+        public ProductDiscount(int discount, DateTime startDate, DateTime endDate)
         {
             Discount = discount;
             StartDate = startDate;
             EndDate = endDate;
         }
 
-        public double Discount { get; }
+        public int Discount { get; }
         public DateTime StartDate { get; }
         public DateTime EndDate { get; }
 

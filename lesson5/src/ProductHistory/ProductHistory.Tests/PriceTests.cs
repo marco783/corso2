@@ -9,9 +9,8 @@ namespace ProductHistory.Tests
         [Fact]
         public void Price_New_Ok()
         {
-            var price = new ProductPrice()
+            var price = new ProductPrice(9.99)
             {
-                Price = 9.99,
                 StartDate = DateTime.Now.AddDays(-5),
                 EndDate = DateTime.Now.AddDays(5)
             };
