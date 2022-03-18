@@ -1,16 +1,6 @@
 ﻿namespace ProductHistoryBusiness.Models
 {
-    public interface IProduct
-    {
-        public List<ProductPrice> Prices { get; init; }
-        public List<ProductDiscount> Discounts { get; set; }
-
-        public OperationResult AddPrice(ProductPrice price);
-
-        public OperationResult AddDiscount(ProductDiscount productDiscount);
-    }
-
-    public class Product : IProduct
+    public class Product
     {
         public string Name { get; set; } = string.Empty;
         public DateTime? ExpirationDate { get; set; }
