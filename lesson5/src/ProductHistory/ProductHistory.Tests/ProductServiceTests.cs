@@ -8,7 +8,30 @@ namespace ProductHistory.Tests
 {
     public class ProductServiceTests
     {
+        [Fact]
+        public void GetProduct_CorrectEan()
+        {
+            var product = new Product()
+            {
+                Name = "Test Product",
+                EanCode = "ABC123"
+            };
 
+            var productRepo = new Mock<IProductRepository>();
+            productRepo.Setup(t => t.GetProduct("ABC123"))
+                .Returns(product);
+
+            var productService = new ProductService(productRepo.Object);
+
+            // Act
+            var result = productService.GetProduct("ABC123");
+
+            // Verify
+            Assert.True(result.Success);
+            Assert.Equal(product.Name, result.Content.Name);
+            Assert.Equal(product.EanCode, result.Content.EanCode);
+            productRepo.Verify(t => t.GetProduct("ABC123"), Times.Once());
+        }
 
 
         [Fact]
@@ -34,31 +57,6 @@ namespace ProductHistory.Tests
             Assert.NotNull(result);
             Assert.False(result.Success);
             Assert.Equal(FailureReason.ItemNotFound, result.FailureReason);
-        }
-
-        [Fact]
-        public void GetProduct_CorrectEan()
-        {
-            var product = new Product()
-            {
-                Name = "Test Product",
-                EanCode = "ABC123"
-            };
-
-            var productRepo = new Mock<IProductRepository>();
-            productRepo.Setup(t => t.GetProduct("ABC123"))
-                .Returns(product);
-
-            var productService = new ProductService(productRepo.Object);
-
-            // Act
-            var result = productService.GetProduct("ABC123");
-
-            // Verify
-            Assert.True(result.Success);
-            Assert.Equal(product.Name, result.Content.Name);
-            Assert.Equal(product.EanCode, result.Content.EanCode);
-            productRepo.Verify(t => t.GetProduct("ABC123"), Times.Once());
         }
     }
 }
