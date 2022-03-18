@@ -8,6 +8,21 @@ namespace ProductHistory.Tests
     public class ProductTests
     {
         [Fact]
+        public void Product_New()
+        {
+            var product = new Product()
+            {
+                Name = "Test Product",
+                EanCode = "ABD123",
+            };
+
+            Assert.NotNull(product.Prices);
+            Assert.Empty(product.Prices);
+            Assert.Null(product.ExpirationDate);
+            Assert.Null(product.Discounts);
+        }
+
+        [Fact]
         public void Product_AddPrice()
         {
             var product = new Product()
