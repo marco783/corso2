@@ -8,7 +8,7 @@ namespace ProductHistory.Tests
     public class ProductTests
     {
         [Fact]
-        public void Product_New()
+        public void Product_New_Ok()
         {
             var product = new Product()
             {
@@ -23,7 +23,7 @@ namespace ProductHistory.Tests
         }
 
         [Fact]
-        public void Product_AddPrice()
+        public void Product_AddPrice_Ok()
         {
             var product = new Product()
             {
@@ -45,7 +45,51 @@ namespace ProductHistory.Tests
         }
 
         [Fact]
-        public void Product_AddDiscount_5()
+        public void Product_AddPrice_MissingStartDate()
+        {
+            var product = new Product()
+            {
+                Name = "Test Product",
+                EanCode = "ABD123",
+                ExpirationDate = null
+            };
+            var newPrice = new ProductPrice()
+            {
+                Price = 99.99,
+                StartDate = DateTime.MinValue,
+                EndDate = DateTime.Now.AddDays(5)
+            };
+
+            var res = product.AddPrice(newPrice);
+
+            Assert.False(res.Success);
+            Assert.Equal(FailureReason.BusinessLogic, res.FailureReason);
+        }
+
+        [Fact]
+        public void Product_AddPrice_MissingEndDate()
+        {
+            var product = new Product()
+            {
+                Name = "Test Product",
+                EanCode = "ABD123",
+                ExpirationDate = null
+            };
+            var newPrice = new ProductPrice()
+            {
+                Price = 99.99,
+                StartDate = DateTime.Now.AddDays(-5),
+                EndDate = DateTime.MinValue
+            };
+
+            var res = product.AddPrice(newPrice);
+
+            Assert.False(res.Success);
+            Assert.Equal(FailureReason.BusinessLogic, res.FailureReason);
+        }
+
+        [Fact]
+        public void Product_AddDiscount_5_Ok()
         {
             var product = new Product()
             {
@@ -68,7 +112,7 @@ namespace ProductHistory.Tests
         }
 
         [Fact]
-        public void Product_AddDiscount_6()
+        public void Product_AddDiscount_6_Ko()
         {
             var product = new Product()
             {
