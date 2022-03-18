@@ -1,4 +1,5 @@
-﻿using ProductHistoryBusiness.Models;
+﻿using ProductHistoryBusiness;
+using ProductHistoryBusiness.Models;
 using System;
 using Xunit;
 
@@ -50,5 +51,30 @@ namespace ProductHistory.Tests
             Assert.True(res.Success);
             Assert.Equal(newProductDiscount.Discount, product.Discounts[0].Discount);
         }
+
+        [Fact]
+        public void Product_AddDiscount_6()
+        {
+            var product = new Product()
+            {
+                Name = "Test Product",
+                EanCode = "ABD123",
+                ExpirationDate = null
+            };
+
+            var newProductDiscount = new ProductDiscount()
+            {
+                Discount = 6,
+                StartDate = DateTime.Now.AddDays(-5),
+                EndDate = DateTime.Now.AddDays(5)
+            };
+
+            var res = product.AddDiscount(newProductDiscount);
+
+            Assert.False(res.Success);
+            Assert.Equal(FailureReason.BusinessLogic, res.FailureReason);
+        }
+
+
     }
 }
