@@ -13,5 +13,15 @@ namespace ProductHistory.Tests
 
             Assert.NotNull(price);
         }
+
+        [Fact]
+        public void ProductPrive_PriceUnder0_Exception()
+        {
+            var price = new ProductPrice(-0.1, DateTime.Now.AddDays(-5), DateTime.Now.AddDays(5));
+
+            Assert.Throws<OverflowException>(() => price);
+        }
+
+
     }
 }

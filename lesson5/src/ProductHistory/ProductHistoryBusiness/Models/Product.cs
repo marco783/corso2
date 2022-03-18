@@ -19,33 +19,4 @@
             throw new NotImplementedException();
         }
     }
-
-    public class ProductPrice
-    {
-        public ProductPrice(double price, DateTime startDate, DateTime endDate)
-        {
-            Price = price;
-            StartDate = startDate;
-            EndDate = endDate;
-        }
-
-        public double Price { get; }
-        public DateTime StartDate { get; }
-        public DateTime EndDate { get; }
-    }
-
-    public class ProductDiscount
-    {
-        public ProductDiscount(int discount, DateTime startDate, DateTime endDate)
-        {
-            Discount = discount;
-            StartDate = startDate;
-            EndDate = endDate;
-        }
-
-        public int Discount { get; }
-        public DateTime StartDate { get; }
-        public DateTime EndDate { get; }
-
-    }
 }

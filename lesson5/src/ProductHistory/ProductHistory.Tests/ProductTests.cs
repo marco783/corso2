@@ -92,7 +92,7 @@ namespace ProductHistory.Tests
         }
 
         [Fact]
-        public void Product_AddDiscount_50_Ko()
+        public void Product_AddDiscount_50_Ok()
         {
             var product = new Product()
             {
@@ -146,7 +146,7 @@ namespace ProductHistory.Tests
         }
 
         [Fact]
-        public void Product_AddDiscount_55_Ko()
+        public void Product_AddDiscount_Over50_55_Ko()
         {
             var product = new Product()
             {
@@ -156,6 +156,60 @@ namespace ProductHistory.Tests
             };
 
             var newProductDiscount = new ProductDiscount(55, DateTime.Now.AddDays(-5), DateTime.Now.AddDays(5));
+
+            var res = product.AddDiscount(newProductDiscount);
+
+            Assert.False(res.Success);
+            Assert.Equal(FailureReason.BusinessLogic, res.FailureReason);
+        }
+
+        [Fact]
+        public void Product_AddDiscount_Over50_51_Ko()
+        {
+            var product = new Product()
+            {
+                Name = "Test Product",
+                EanCode = "ABC123",
+                ExpirationDate = null
+            };
+
+            var newProductDiscount = new ProductDiscount(51, DateTime.Now.AddDays(-5), DateTime.Now.AddDays(5));
+
+            var res = product.AddDiscount(newProductDiscount);
+
+            Assert.False(res.Success);
+            Assert.Equal(FailureReason.BusinessLogic, res.FailureReason);
+        }
+
+        [Fact]
+        public void Product_AddDiscount_Under0_minus1_Ko()
+        {
+            var product = new Product()
+            {
+                Name = "Test Product",
+                EanCode = "ABC123",
+                ExpirationDate = null
+            };
+
+            var newProductDiscount = new ProductDiscount(-1, DateTime.Now.AddDays(-5), DateTime.Now.AddDays(5));
+
+            var res = product.AddDiscount(newProductDiscount);
+
+            Assert.False(res.Success);
+            Assert.Equal(FailureReason.BusinessLogic, res.FailureReason);
+        }
+
+        [Fact]
+        public void Product_AddDiscount_Under0_minus5_Ko()
+        {
+            var product = new Product()
+            {
+                Name = "Test Product",
+                EanCode = "ABC123",
+                ExpirationDate = null
+            };
+
+            var newProductDiscount = new ProductDiscount(-5, DateTime.Now.AddDays(-5), DateTime.Now.AddDays(5));
 
             var res = product.AddDiscount(newProductDiscount);
 
