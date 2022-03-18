@@ -4,14 +4,14 @@ namespace ProductHistoryBusiness
 {
     public interface IProductService
     {
-        OperationResult InsertProduct();
+        OperationResult InsertProduct(Product product);
 
         OperationResult<Product> GetProduct(string eanCode);
 
         OperationResult<Product> GetProduct(string eanCode, DateTime date);
 
-        OperationResult UpdateProduct();
+        OperationResult UpdateProduct(Product product);
 
-        OperationResult DeleteProduct();
+        OperationResult DeleteProduct(Product product);
     }
 }

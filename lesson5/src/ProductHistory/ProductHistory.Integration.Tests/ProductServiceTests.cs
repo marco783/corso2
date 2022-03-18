@@ -47,8 +47,7 @@ namespace ProductHistory.Integration.Tests
 
             var productRepo = new Mock<IProductRepository>();
             productRepo.Setup(t => t.GetProduct("Wrong ean"))
-                .Returns<Product>(null); //??? va bene? se volessi far ritornare a GetProduct un OperationResult come posso fare? (vedi riga successiva)
-                                         //.Returns(OperationResult.Fail(FailureReason.ItemNotFound, "Ean not found")); // mi da errore (ovviamente mettendo come tipo di ritorno di GetProduct OperationResult)
+                .Returns(OperationResult.Fail(FailureReason.ItemNotFound, "Ean not found"));
 
             var productService = new ProductService(productRepo.Object);
 
@@ -59,6 +58,7 @@ namespace ProductHistory.Integration.Tests
             Assert.NotNull(result);
             Assert.False(result.Success);
             Assert.Equal(FailureReason.ItemNotFound, result.FailureReason);
+            Assert.Equal("Ean not found", result.ErrorMessage);
         }
 
         [Fact]
@@ -77,6 +77,51 @@ namespace ProductHistory.Integration.Tests
                     new ProductDiscount(5, DateTime.Now.AddDays(-5), DateTime.Now.AddDays(5))
                 }
             };
+
+            var productRepo = new Mock<IProductRepository>();
+            productRepo.Setup(t => t.AddProduct(product))
+                .Returns(OperationResult.Ok());
+
+            var productService = new ProductService(productRepo.Object);
+
+            // Act
+            var result = productService.InsertProduct(product);
+
+            // Verify
+            Assert.NotNull(result);
+            Assert.True(result.Success);
+        }
+
+        [Fact]
+        public void Product_Add_WrongDiscount()
+        {
+            var product = new Product()
+            {
+                Name = "Test Product",
+                EanCode = "ABC123",
+                Prices = new List<ProductPrice>()
+                {
+                    new ProductPrice(9.99, DateTime.Now.AddDays(-5), DateTime.Now.AddDays(5))
+                },
+                Discounts = new List<ProductDiscount>()
+                {
+                    new ProductDiscount(0, DateTime.Now.AddDays(-5), DateTime.Now.AddDays(5))
+                }
+            };
+
+            var productRepo = new Mock<IProductRepository>();
+            productRepo.Setup(t => t.AddProduct(product))
+                .Returns(OperationResult.Fail(FailureReason.BusinessLogic, "ProductDiscount not valid"));
+
+            var productService = new ProductService(productRepo.Object);
+
+            // Act
+            var result = productService.InsertProduct(product);
+
+            // Verify
+            Assert.NotNull(result);
+            Assert.False(result.Success);
+            Assert.Equal("ProductDiscount not valid", result.ErrorMessage);
         }
     }
 }

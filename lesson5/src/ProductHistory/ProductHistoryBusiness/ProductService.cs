@@ -12,7 +12,7 @@ namespace ProductHistoryBusiness
             _productRepository = productRepository;
         }
 
-        public OperationResult InsertProduct()
+        public OperationResult InsertProduct(Product product)
         {
             throw new NotImplementedException();
         }
@@ -27,12 +27,12 @@ namespace ProductHistoryBusiness
             throw new NotImplementedException();
         }
 
-        public OperationResult UpdateProduct()
+        public OperationResult UpdateProduct(Product product)
         {
             throw new NotImplementedException();
         }
 
-        public OperationResult DeleteProduct()
+        public OperationResult DeleteProduct(Product product)
         {
             throw new NotImplementedException();
         }
