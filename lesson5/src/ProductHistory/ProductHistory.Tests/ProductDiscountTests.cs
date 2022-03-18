@@ -26,7 +26,7 @@ namespace ProductHistory.Tests
         [Fact]
         public void ProductDiscount_DiscountOver50_Exception()
         {
-            var price = new ProductPrice(51, DateTime.Now.AddDays(-5), DateTime.Now.AddDays(5));
+            var price = new ProductPrice(RandomNumberGenerator.GetInt32(51, 600), DateTime.Now.AddDays(-5), DateTime.Now.AddDays(5));
 
             Assert.Throws<OverflowException>(() => price);
         }
@@ -43,7 +43,7 @@ namespace ProductHistory.Tests
         [Fact]
         public void ProductDiscount_Discount_Notvalid()
         {
-            var randomPrice = -1;
+            int randomPrice;
             do
             {
                 randomPrice = RandomNumberGenerator.GetInt32(0, 50);
