@@ -4,7 +4,7 @@ using Xunit;
 
 namespace ProductHistory.Tests
 {
-    public class PriceTests
+    public class ProductPriceTests
     {
         [Fact]
         public void Price_New_Ok()
