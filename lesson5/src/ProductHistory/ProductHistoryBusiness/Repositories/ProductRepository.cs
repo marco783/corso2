@@ -14,17 +14,17 @@ namespace ProductHistoryBusiness.Repositories
             throw new NotImplementedException();
         }
 
-        public Product GetProduct(string eanCode)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Product GetProduct(string eanCode, DateTime startDate, DateTime endDate)
-        {
-            throw new NotImplementedException();
-        }
-
         public OperationResult UpdateProduct(Product product)
+        {
+            throw new NotImplementedException();
+        }
+
+        OperationResult<Product> IProductRepository.GetProduct(string eanCode)
+        {
+            throw new NotImplementedException();
+        }
+
+        OperationResult<Product> IProductRepository.GetProduct(string eanCode, DateTime startDate, DateTime endDate)
         {
             throw new NotImplementedException();
         }
