@@ -13,7 +13,7 @@ namespace ProductHistory.Tests
             var product = new Product()
             {
                 Name = "Test Product",
-                EanCode = "ABD123",
+                EanCode = "ABC123",
             };
 
             Assert.NotNull(product.Prices);
@@ -28,7 +28,7 @@ namespace ProductHistory.Tests
             var product = new Product()
             {
                 Name = "Test Product",
-                EanCode = "ABD123",
+                EanCode = "ABC123",
                 ExpirationDate = null
             };
             var newPrice = new ProductPrice(9.99, DateTime.Now.AddDays(-5), DateTime.Now.AddDays(5));
@@ -45,7 +45,7 @@ namespace ProductHistory.Tests
             var product = new Product()
             {
                 Name = "Test Product",
-                EanCode = "ABD123",
+                EanCode = "ABC123",
                 ExpirationDate = null
             };
             var newPrice = new ProductPrice(9.99, DateTime.Now.AddDays(-5), DateTime.Now.AddDays(5));
@@ -62,7 +62,7 @@ namespace ProductHistory.Tests
             var product = new Product()
             {
                 Name = "Test Product",
-                EanCode = "ABD123",
+                EanCode = "ABC123",
                 ExpirationDate = null
             };
             var newPrice = new ProductPrice(9.99, DateTime.Now.AddDays(-5), DateTime.Now.AddDays(5));
@@ -79,7 +79,7 @@ namespace ProductHistory.Tests
             var product = new Product()
             {
                 Name = "Test Product",
-                EanCode = "ABD123",
+                EanCode = "ABC123",
                 ExpirationDate = null
             };
 
@@ -97,7 +97,7 @@ namespace ProductHistory.Tests
             var product = new Product()
             {
                 Name = "Test Product",
-                EanCode = "ABD123",
+                EanCode = "ABC123",
                 ExpirationDate = null
             };
 
@@ -115,7 +115,7 @@ namespace ProductHistory.Tests
             var product = new Product()
             {
                 Name = "Test Product",
-                EanCode = "ABD123",
+                EanCode = "ABC123",
                 ExpirationDate = null
             };
 
@@ -133,7 +133,7 @@ namespace ProductHistory.Tests
             var product = new Product()
             {
                 Name = "Test Product",
-                EanCode = "ABD123",
+                EanCode = "ABC123",
                 ExpirationDate = null
             };
 
@@ -151,7 +151,7 @@ namespace ProductHistory.Tests
             var product = new Product()
             {
                 Name = "Test Product",
-                EanCode = "ABD123",
+                EanCode = "ABC123",
                 ExpirationDate = null
             };
 

@@ -7,9 +7,10 @@ namespace ProductHistory.Tests
     public class ProductPriceTests
     {
         [Fact]
-        public void Price_New_Ok()
+        public void ProductPrice_New_Ok()
         {
             var price = new ProductPrice(9.99, DateTime.Now.AddDays(-5), DateTime.Now.AddDays(5));
+
             Assert.NotNull(price);
         }
     }

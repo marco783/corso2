@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using Xunit;
 
-namespace ProductHistory.Tests
+namespace ProductHistory.Integration.Tests
 {
     public class ProductServiceTests
     {
