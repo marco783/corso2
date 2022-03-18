@@ -1,9 +1,17 @@
 ﻿using ProductHistoryBusiness.Models;
+using ProductHistoryBusiness.Repositories;
 
 namespace ProductHistoryBusiness
 {
-    public class ProductService
+    public class ProductService : IProductService
     {
+        private IProductRepository _productRepository { get; }
+
+        public ProductService(IProductRepository productRepository)
+        {
+            _productRepository = productRepository;
+        }
+
         public OperationResult InsertProduct()
         {
             throw new NotImplementedException();
